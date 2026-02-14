@@ -1,0 +1,19 @@
+{
+  "name": "tile-merge-game-frameworks",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev:react": "pnpm -F react dev",
+    "dev:vue3": "pnpm -F vue3 dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {}
+}

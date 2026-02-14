@@ -1,0 +1,95 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Build all packages
+        run: pnpm run build
+      
+      - name: Prepare deployment
+        run: |
+          mkdir -p final_dist
+          cp -r packages/react/dist final_dist/react
+          cp -r packages/vue3/dist final_dist/vue3
+          cat > final_dist/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Tile Merge Game - Framework Comparison</title>
+              <style>
+                  body { font-family: system-ui, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+                  h1 { text-align: center; }
+                  .container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+                  .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; text-align: center; }
+                  .card a { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #8b5cf6; color: white; text-decoration: none; border-radius: 6px; }
+                  .card a:hover { background: #7c3aed; }
+              </style>
+          </head>
+          <body>
+              <h1>🎮 Tile Merge Game - Framework Comparison</h1>
+              <p style="text-align: center;">Learn how the same game is implemented using different frameworks:</p>
+              <div class="container">
+                  <div class="card">
+                      <h2>⚛️ React</h2>
+                      <p>Built with React 19 and TypeScript. Uses Hooks for state management.</p>
+                      <a href="./react/">Play React Version</a>
+                  </div>
+                  <div class="card">
+                      <h2>💚 Vue 3</h2>
+                      <p>Built with Vue 3 and TypeScript. Uses Composition API for reactivity.</p>
+                      <a href="./vue3/">Play Vue 3 Version</a>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./final_dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

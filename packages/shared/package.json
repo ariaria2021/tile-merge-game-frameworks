@@ -1,0 +1,12 @@
+{
+  "name": "@game-frameworks/shared",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./types": "./src/types/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}

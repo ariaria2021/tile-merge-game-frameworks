@@ -1,0 +1,130 @@
+/* Tile.module.css */
+.tile {
+    position: absolute;
+    background-color: #f3f4f6;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: top 150ms ease-in-out, left 150ms ease-in-out;
+    color: #1f2937;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 数字ごとの色設定 (Purple Scale) */
+.tile2 {
+    background-color: #ffffff;
+    color: #4b5563;
+}
+
+.tile4 {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+.tile8 {
+    background-color: #e9d5ff;
+    color: #6b21a8;
+}
+
+.tile16 {
+    background-color: #d8b4fe;
+    color: #6b21a8;
+}
+
+.tile32 {
+    background-color: #c084fc;
+    color: #ffffff;
+}
+
+.tile64 {
+    background-color: #a855f7;
+    color: #ffffff;
+}
+
+.tile128 {
+    background-color: #9333ea;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.tile256 {
+    background-color: #7e22ce;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.tile512 {
+    background-color: #6b21a8;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.tile1024 {
+    background-color: #581c87;
+    color: #ffffff;
+    font-size: 36px;
+}
+
+.tile2048 {
+    background-color: #3b0764;
+    color: #ffffff;
+    font-size: 36px;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* 新規タイル出現アニメーション */
+.newTile {
+    animation: appear 200ms ease;
+}
+
+/* マージアニメーション */
+.mergedTile {
+    animation: pop 200ms ease;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 520px) {
+    .tile {
+        font-size: 32px;
+    }
+
+    .tile128,
+    .tile256,
+    .tile512 {
+        font-size: 28px;
+    }
+
+    .tile1024,
+    .tile2048 {
+        font-size: 22px;
+    }
+}
