@@ -25,18 +25,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: pnpm
-      
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+          cache: npm
       
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
       
       - name: Build all packages
-        run: pnpm run build
+        run: npm run build
+
       
       - name: Prepare deployment
         run: |
@@ -66,12 +62,12 @@ jobs:
                   <div class="card">
                       <h2>⚛️ React</h2>
                       <p>Built with React 19 and TypeScript. Uses Hooks for state management.</p>
-                      <a href="./react/">Play React Version</a>
+                      <a href="/tile-merge-game-frameworks/react/">Play React Version</a>
                   </div>
                   <div class="card">
                       <h2>💚 Vue 3</h2>
                       <p>Built with Vue 3 and TypeScript. Uses Composition API for reactivity.</p>
-                      <a href="./vue3/">Play Vue 3 Version</a>
+                      <a href="/tile-merge-game-frameworks/vue3/">Play Vue 3 Version</a>
                   </div>
               </div>
           </body>

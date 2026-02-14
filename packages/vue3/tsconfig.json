@@ -1,6 +1,12 @@
 {
-  "compilerOptions": {},
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler"
+  },
   "references": [
-    { "path": "../../" }
+    {
+      "path": "../shared"
+    }
   ]
 }

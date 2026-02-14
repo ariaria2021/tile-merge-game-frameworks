@@ -11,6 +11,7 @@ export const useGrid = () => {
         return initialGrid;
     });
 
+
     const move = useCallback((direction: Direction) => {
         let moved = false;
         let totalScore = 0;

@@ -7,10 +7,10 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "dev:react": "pnpm -F react dev",
-    "dev:vue3": "pnpm -F vue3 dev",
-    "build": "pnpm -r build",
-    "lint": "pnpm -r lint"
+    "dev:react": "npm run dev -w react",
+    "dev:vue3": "npm run dev -w vue3",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
   },
   "workspaces": [
     "packages/*"

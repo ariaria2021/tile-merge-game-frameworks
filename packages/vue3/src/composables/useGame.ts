@@ -4,12 +4,13 @@ import { createEmptyGrid, addRandomTile } from '@game-frameworks/shared/utils'
 import { rotateRight, rotateLeft, processRow } from '@game-frameworks/shared/utils'
 
 export const useGame = () => {
-  const grid = ref<Grid>(() => {
+  const grid = ref<Grid>((() => {
     let initialGrid = createEmptyGrid()
     initialGrid = addRandomTile(initialGrid)
     initialGrid = addRandomTile(initialGrid)
     return initialGrid
-  }())
+  })())
+
 
   const move = (direction: Direction) => {
     let moved = false

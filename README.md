@@ -39,22 +39,22 @@
 ### Installation
 ```bash
 cd tile-merge-game-frameworks
-pnpm install
+npm install
 ```
 
 ### Development
 ```bash
 # React版を開発
-pnpm run dev:react
+npm run dev:react
 
 # Vue3版を開発
-pnpm run dev:vue3
+npm run dev:vue3
 ```
 
 ### Build
 ```bash
 # 全パッケージをビルド
-pnpm run build
+npm run build
 ```
 
 ## 📁 Project Structure
