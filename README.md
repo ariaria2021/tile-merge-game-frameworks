@@ -4,10 +4,10 @@
 
 ## ✨ Features
 
-- **🎯 同じゲーム、複数のフレームワーク**：Monorepoで管理される React と Vue3 版
+- **🎯 同じゲーム、複数のフレームワーク**：Monorepoで管理される React, Vue3, Svelte 版
 - **🏗️ Shared Logic**：ゲームロジック（グリッド操作、スコア計算）はTypeScriptで統一
-- **🎨 Identical UI/UX**：両バージョンで同じスタイル、アニメーション、操作感
-- **📚 Learning Resource**：React/Vue の状態管理、ライフサイクル、コンポーネント設計の比較
+- **🎨 Identical UI/UX**：各バージョンで同じスタイル、アニメーション、操作感
+- **📚 Learning Resource**：React/Vue/Svelte の状態管理、ライフサイクル、コンポーネント設計の比較
 - **🚀 CI/CD Ready**：GitHub Actions で自動ビルド・デプロイ
 
 ## 🛠️ Tech Stack
@@ -30,6 +30,13 @@
 - Composition API (<script setup>)
 - CSS Modules
 
+### Svelte Package
+- Svelte 5
+- TypeScript
+- Vite
+- Runes ($state, $derived) + Writable Stores
+- CSS Modules
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -49,6 +56,9 @@ npm run dev:react
 
 # Vue3版を開発
 npm run dev:vue3
+
+# Svelte版を開発
+npm run dev:svelte
 ```
 
 ### Build
@@ -71,10 +81,15 @@ tile-merge-game-frameworks/
 │   │       ├── components/
 │   │       ├── hooks/
 │   │       └── styles/
-│   └── vue3/            # Vue3実装
+│   ├── vue3/            # Vue3実装
+│   │   └── src/
+│   │       ├── components/
+│   │       ├── composables/
+│   │       └── styles/
+│   └── svelte/          # Svelte実装
 │       └── src/
 │           ├── components/
-│           ├── composables/
+│           ├── stores/
 │           └── styles/
 ├── .github/workflows/   # GitHub Actions
 └── tsconfig.json        # ルートTypeScript設定
@@ -92,11 +107,11 @@ tile-merge-game-frameworks/
 ### React vs Vue3 比較
 このリポジトリは、React と Vue3 の主な違いを学ぶのに最適です：
 
-1. **状態管理**：`useState` vs `ref()` / `computed()`
-2. **ライフサイクル**：`useEffect` vs `onMounted`, `onBeforeUnmount`, `watch`
-3. **カスタムHook vs Composable**：`useGrid` → `useGame`
+1. **状態管理**：`useState` vs `ref()` / `computed()` vs `writable` / `$state`
+2. **ライフサイクル**：`useEffect` vs `onMounted` / `watch` vs `onMount` / `$effect`
+3. **カスタムHook vs Composable vs Store**：`useGrid` → `useGame` → `gameStore`
 4. **イベント処理**：キーボード・タッチ入力の実装方法
-5. **スタイリング**：CSS Modules / `<style scoped>`
+5. **スタイリング**：CSS Modules / `<style scoped>` / CSS Modules
 
 詳細は、[ブログ記事](https://ariaria2021.github.io/blog/react-to-vue3-tile-merge-game/) を参照してください。
 
@@ -108,6 +123,7 @@ GitHub Actions により、main ブランチへのプッシュ時に自動的に
 
 - React版：`/react/`
 - Vue3版：`/vue3/`
+- Svelte版：`/svelte/`
 
 ## 📝 License
 

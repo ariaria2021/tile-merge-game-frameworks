@@ -7,8 +7,9 @@
     "node": ">=24.0.0"
   },
   "scripts": {
-    "dev:react": "npm run dev -w react",
-    "dev:vue3": "npm run dev -w vue3",
+    "dev:react": "npm run dev -w @game-frameworks/react",
+    "dev:vue3": "npm run dev -w @game-frameworks/vue3",
+    "dev:svelte": "npm run dev -w @game-frameworks/svelte",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present"
   },
